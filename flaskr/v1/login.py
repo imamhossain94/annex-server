@@ -2,18 +2,7 @@ from bs4 import BeautifulSoup
 from flask import request, jsonify
 from requests import Session
 from requests.utils import dict_from_cookiejar
-
-# Base url
-# The login page of the annex bubt website
-baseUrl = 'https://annex.bubt.edu.bd/'
-
-# Path or Endpoint
-loginPath = 'global_file/action/login_action.php'
-dashboardPath = 'ONSIS_SEITO/'
-
-# Urls
-loginUrl = baseUrl + loginPath
-dashboardUrl = baseUrl + dashboardPath
+from flaskr.v1.constants import *
 
 
 # Login using students id and password
