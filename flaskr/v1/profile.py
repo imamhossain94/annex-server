@@ -1,7 +1,7 @@
 from bs4 import BeautifulSoup
 from flask import request, jsonify
 from requests import get
-from flaskr.service.services import *
+from flaskr.v1.service.services import *
 from flaskr.v1.constants import *
 
 
@@ -63,7 +63,7 @@ def studentProfile():
             # it will take two parameters
             # first one is file_name
             # second one is image src
-            std_image_url = uploadImage(std_name + '_' + std_id, proPic.find('img')['src'])
+            std_image_url = convertAndUploadImage(std_name + '_' + std_id, proPic.find('img')['src'])
 
             # create a data dictionary to respond
             data = {
