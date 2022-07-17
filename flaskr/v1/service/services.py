@@ -52,7 +52,7 @@ def uploadImage(file_name):
         blob = bucket.blob(routineStorageBucketPath % file_name)
 
         # upload the images
-        blob.upload_from_filename(screenshotDirPath + file_name + '.png')
+        blob.upload_from_filename(routineDirPath % file_name)
 
         # Update blob's ACL, granting read access to anonymous users.
         blob.make_public()

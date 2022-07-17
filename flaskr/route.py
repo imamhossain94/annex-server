@@ -1,3 +1,5 @@
+import asyncio
+import nest_asyncio
 from flask import Blueprint
 from flaskr.v1.login import *
 from flaskr.v1.profile import *
@@ -18,4 +20,12 @@ def profile():
 
 @annex.route('/annex/v1/routine', methods=['GET'])
 def routine():
-    return studentRoutine()
+    try:
+        loop = asyncio.get_running_loop()
+    except RuntimeError:  # no event loop running:
+        loop = asyncio.new_event_loop()
+        return loop.run_until_complete(studentRoutine())
+    else:
+        nest_asyncio.apply(loop)
+        return asyncio.run(studentRoutine())
+

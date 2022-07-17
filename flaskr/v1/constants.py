@@ -17,7 +17,7 @@ routinePrinterUrl = dashboardUrl + routinePrinterPath
 
 # Images directory path
 imageDirPath = 'flaskr/images/%s.png'
-screenshotDirPath = 'flaskr/screenshot/'
+routineDirPath = 'flaskr/v1/helper/%s.png'
 studentStorageBucketPath = 'images/students/%s.png'
 teacherStorageBucketPath = 'images/teachers/%s.png'
 routineStorageBucketPath = 'images/routine/%s.png'

@@ -1,14 +1,16 @@
+import asyncio
+
+import nest_asyncio
 from bs4 import BeautifulSoup
 from flask import request, jsonify
 from requests import get
-from flaskr.v1.constants import *
+
+from flaskr.v1.helper.take_screenshot import *
 from flaskr.v1.service.services import *
-from flaskr.v1.helper.web_image import *
 
 
 # Get students routine
-def studentRoutine():
-
+async def studentRoutine():
     # get requested users session id from the request arguments
     phpsessid = request.args.get('phpsessid')
     routine_type = request.args.get('type') or 'data'
@@ -43,22 +45,28 @@ def studentRoutine():
 
             elif routine_type == 'image':
                 fileName = std_name + '_' + std_id
-                # open_url(
-                #     file_name=fileName,
-                #     address=routineUrl,#'https://annex.bubt.edu.bd/ONSIS_SEITO/includes/helpers/routine_format.php',
-                #     phpsessid=phpsessid
-                # )
 
-                b = 'https://render-tron.appspot.com/screenshot/'
-                r = get(routineUrl, stream=True, cookies=cookies)
-                with open('xyz.png', 'wb') as file:
-                    for x in r:
-                        file.write(x)
+                try:
+                    loop = asyncio.get_running_loop()
+                except RuntimeError:  # no event loop running:
+                    loop = asyncio.new_event_loop()
+                    loop.run_until_complete(take_screenshot(
+                        file_name=fileName,
+                        url=routineUrl,
+                        phpsessid=phpsessid
+                    ))
+                else:
+                    nest_asyncio.apply(loop)
+                    asyncio.run(take_screenshot(
+                        file_name=fileName,
+                        url=routineUrl,
+                        phpsessid=phpsessid
+                    ))
 
-                # routine_image_url = uploadImage(fileName)
+                routine_image_url = uploadImage(fileName)
 
                 data = {
-                    'url': 'routine_image_url',
+                    'url': routine_image_url,
                     'status': 'true',
                 }
         else:
