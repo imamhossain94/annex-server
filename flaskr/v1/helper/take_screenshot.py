@@ -23,14 +23,3 @@ async def take_screenshot(file_name, url, phpsessid):
         'fullPage': True
     })
     await browser.close()
-
-
-# asyncio.get_event_loop().run_until_complete(
-# )
-
-
-# asyncio.run(take_screenshot(
-#     file_name="lal",
-#     url=routinePrinterUrl,
-#     phpsessid="755bcdd4787fe51c2dd3b6124cebc8b9"
-# ))
