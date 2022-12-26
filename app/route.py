@@ -1,6 +1,7 @@
 import asyncio
-import nest_asyncio
+
 from flask import Blueprint
+
 from app.v1.login import *
 from app.v1.profile import *
 from app.v1.routine import *

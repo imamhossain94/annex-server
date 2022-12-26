@@ -1,4 +1,4 @@
-import nest_asyncio
+
 from bs4 import BeautifulSoup
 from flask import request, jsonify
 from requests import get
