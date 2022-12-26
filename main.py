@@ -1,7 +1,7 @@
 import os
 import sys
 from flask import Flask
-from flaskr.route import *
+from app.route import *
 
 sys.path.insert(0, os.getcwd() + '/apis')
 

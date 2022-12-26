@@ -2,7 +2,7 @@ from bs4 import BeautifulSoup
 from flask import request, jsonify
 from requests import Session
 from requests.utils import dict_from_cookiejar
-from flaskr.v1.constants import *
+from app.v1.constants import *
 
 
 # Login using students id and password
@@ -45,7 +45,7 @@ def annexLogin():
     else:
         # if the students id or password is missing then send this response
         data = {'status': 'false', 'reason': 'ID or Password is not Provided!'}
-    # serialize data to JSON and wrap it in a ~flask.Response with the application/json mimetype.
+    # serialize data to JSON and wrap it in a ~app.Response with the application/json mimetype.
     response = jsonify(data)
     # the Access-Control-Allow-Origin response header indicates whether the response can be
     # shared with requesting code from the given origin.

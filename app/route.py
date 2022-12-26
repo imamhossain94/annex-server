@@ -1,9 +1,9 @@
 import asyncio
 import nest_asyncio
 from flask import Blueprint
-from flaskr.v1.login import *
-from flaskr.v1.profile import *
-from flaskr.v1.routine import *
+from app.v1.login import *
+from app.v1.profile import *
+from app.v1.routine import *
 
 annex = Blueprint('annex', __name__)
 

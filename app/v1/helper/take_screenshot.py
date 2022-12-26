@@ -1,6 +1,6 @@
 import asyncio
 from pyppeteer import launch
-from flaskr.v1.constants import *
+from app.v1.constants import *
 import time
 
 

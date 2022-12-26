@@ -4,10 +4,25 @@ from PIL import Image
 import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import storage
-from flaskr.v1.constants import *
+from app.v1.constants import *
 
-# service account of the firebase project
-cred = credentials.Certificate("serviceAccountKey.json")
+
+firebase_credentials = {
+    "type": os.environ.get("TYPE"),
+    "project_id": os.environ.get("PROJECT_ID"),
+    "private_key_id": os.environ.get("PRIVATE_KEY_ID"),
+    "private_key": os.environ.get("PRIVATE_KEY").replace(r'\n', '\n'),
+    "client_email": os.environ.get("CLIENT_EMAIL"),
+    "client_id": os.environ.get("CLIENT_ID"),
+    "auth_uri": os.environ.get("AUTH_URI"),
+    "token_uri": os.environ.get("TOKEN_URI"),
+    "auth_provider_x509_cert_url": os.environ.get("AUTH_PROVIDER_X509_CERT_URL"),
+    "client_x509_cert_url": os.environ.get("CLIENT_X509_CERT_URL")
+}
+
+# Auth google admin sdk
+cred = credentials.Certificate(firebase_credentials)
+
 # storage bucket of the firebase project
 firebase_admin.initialize_app(cred, {'storageBucket': 'bubt-smart-routine.appspot.com'})
 

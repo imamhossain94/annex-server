@@ -1,8 +1,8 @@
 from bs4 import BeautifulSoup
 from flask import request, jsonify
 from requests import get
-from flaskr.v1.service.services import *
-from flaskr.v1.constants import *
+from app.v1.service.services import *
+from app.v1.constants import *
 
 
 # Get students basic information
@@ -82,7 +82,7 @@ def studentProfile():
     else:
         # if the phpsessid is missing then send this response
         data = {'status': 'false', 'reason': 'phpsessid is not Provided!'}
-    # serialize data to JSON and wrap it in a ~flask.Response with the application/json mimetype.
+    # serialize data to JSON and wrap it in a ~app.Response with the application/json mimetype.
     response = jsonify(data)
     # the Access-Control-Allow-Origin response header indicates whether the response can be
     # shared with requesting code from the given origin.

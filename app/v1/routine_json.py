@@ -1,11 +1,7 @@
 import os
 import sys
-import nest_asyncio
-from bs4 import BeautifulSoup
-from flask import request, jsonify
-from requests import get
 
-from flaskr.v1.constants import *
+from bs4 import BeautifulSoup
 
 
 def generateClassObj(day, time, cls, link):
