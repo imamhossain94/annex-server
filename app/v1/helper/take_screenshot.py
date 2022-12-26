@@ -1,10 +1,11 @@
-import asyncio
-from pyppeteer import launch
-from app.v1.constants import *
 import time
 
+from pyppeteer import launch
 
+from app.v1.constants import *
 # https://stackoverflow.com/questions/61806240/pyppeteer-browser-closed-unexpectedly-in-heroku
+#
+from app.v1.service.services import uploadImage
 
 
 async def take_screenshot(file_name, url, phpsessid):
@@ -17,9 +18,12 @@ async def take_screenshot(file_name, url, phpsessid):
     await page.setCookie(cookies[0])
     await page.goto(url)
     time.sleep(3)
-    await page.screenshot({
-        'path': routineDirPath % file_name,
+    imageString = await page.screenshot({
+        # 'path': routineDirPath % file_name,
+        'encoding': 'base64',
         'quality': 100,
         'fullPage': True
     })
     await browser.close()
+
+    return uploadImage(file_name, imageString)

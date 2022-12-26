@@ -34,8 +34,9 @@ def convertAndUploadImage(file_name, string_file):
         im = Image.open(BytesIO(
             base64.b64decode(string_file.replace('data:image/png;base64,', '').replace('data:image/gif;base64,', ''))))
 
-        # if the base64 string is valid then save the image into the images directory
-        im.save(imageDirPath % file_name, 'PNG')
+        # if the base64 string is valid then save the image as BytesIO
+        buffer = BytesIO()
+        im.save(buffer, format="JPEG", optimize=True)
 
         # create a storage bucket object
         bucket = storage.bucket()
@@ -44,7 +45,7 @@ def convertAndUploadImage(file_name, string_file):
         blob = bucket.blob(studentStorageBucketPath % file_name)
 
         # upload the images
-        blob.upload_from_filename(imageDirPath % file_name)
+        blob.upload_from_string(buffer.getvalue(), content_type='image/jpeg')
 
         # Update blob's ACL, granting read access to anonymous users.
         blob.make_public()
@@ -59,15 +60,23 @@ def convertAndUploadImage(file_name, string_file):
         return dashboardUrl + string_file
 
 
-def uploadImage(file_name):
+def uploadImage(file_name, string_file):
     try:
+        # first try to open the base64 image string
+        im = Image.open(BytesIO(
+            base64.b64decode(string_file.replace('data:image/png;base64,', '').replace('data:image/gif;base64,', ''))))
+        rgb_im = im.convert('RGB')
+        # if the base64 string is valid then save the image as BytesIO
+        buffer = BytesIO()
+        rgb_im.save(buffer, format="JPEG", optimize=True)
+
         # create a storage bucket object
         bucket = storage.bucket()
         # create a blob object for the image
         blob = bucket.blob(routineStorageBucketPath % file_name)
 
         # upload the images
-        blob.upload_from_filename(routineDirPath % file_name)
+        blob.upload_from_string(buffer.getvalue(), content_type='image/jpeg')
 
         # Update blob's ACL, granting read access to anonymous users.
         blob.make_public()

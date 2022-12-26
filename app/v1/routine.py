@@ -87,23 +87,7 @@ async def studentRoutine():
 
             elif routine_type == 'image':
                 fileName = std_name + '_' + std_id
-                try:
-                    loop = asyncio.get_running_loop()
-                except RuntimeError:  # no event loop running:
-                    loop = asyncio.new_event_loop()
-                    loop.run_until_complete(take_screenshot(
-                        file_name=fileName,
-                        url=routineUrl,
-                        phpsessid=phpsessid
-                    ))
-                else:
-                    nest_asyncio.apply(loop)
-                    asyncio.run(take_screenshot(
-                        file_name=fileName,
-                        url=routineUrl,
-                        phpsessid=phpsessid
-                    ))
-                routine_image_url = uploadImage(fileName)
+                routine_image_url = await take_screenshot(file_name=fileName, url=routineUrl, phpsessid=phpsessid)
                 data = {
                     'url': routine_image_url,
                     'status': 'true',

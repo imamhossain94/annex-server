@@ -1,6 +1,10 @@
 import os
 import sys
 from flask import Flask
+# Load .env file
+from dotenv import load_dotenv
+
+load_dotenv()
 from app.route import *
 
 sys.path.insert(0, os.getcwd() + '/apis')
