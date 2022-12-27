@@ -7,8 +7,8 @@ This script will help you to login on your annex portal then get users and routi
 
 
 ## Special Thanks to
-* <a href="https://github.com/xaadu">Abdullah Zayed</a>, for the initial scripts
-* Naima A**** N***, for her annex credentials.
+* <a href="https://github.com/xaadu">Abdullah Zayed</a>, for the starter scripts
+* Naima Akter Nila, for her annex credentials.
 
 
 ## Now this app is hosted on Mogenius Studio
@@ -116,8 +116,7 @@ python wsgi.py
 
 ## API Example
 
-* Login: [GET] http://127.0.0.1:5000/annex/v1/login?id=<your annex id>&pass=<your annex pass>
-* Ex: [GET] http://127.0.0.1:5000/annex/v1/login?id=17181103084&pass=imammaisha
+* Login: [GET] https://annex-server-prod-annex-l4sa4h.mo6.mogenius.io/annex/v1/login?id=<your_annex_id>&pass=<your_annex_pass>
 
 ```json
 {
@@ -126,8 +125,7 @@ python wsgi.py
 }
 ```
 
-* Profile: [GET] http://127.0.0.1:5000/annex/v1/profile?phpsessid=<session id obtained by login API>
-* Ex: [GET] http://127.0.0.1:5000/annex/v1/profile?phpsessid=71bcd3ad03cb3812bf8b48cd8d5*****
+* Profile: [GET] https://annex-server-prod-annex-l4sa4h.mo6.mogenius.io/annex/v1/profile?phpsessid=<session_id_obtained_by_login_API>
 
 ```json
 {
@@ -142,8 +140,7 @@ python wsgi.py
 }
 ```
 
-* Routine as Data: [GET] http://127.0.0.1:5000/annex/v1/routine?type=data&phpsessid=<session id obtained by login API>
-* Ex: [GET] http://127.0.0.1:5000/annex/v1/routine?type=data&phpsessid=71bcd3ad03cb3812bf8b48cd8d5*****
+* Routine as Data: [GET] https://annex-server-prod-annex-l4sa4h.mo6.mogenius.io/annex/v1/routine?type=data&phpsessid=<session_id_obtained_by_login_API>
 
 ```json
 {
@@ -186,8 +183,7 @@ python wsgi.py
 }
 ```
 
-* Routine as Image: [GET] http://127.0.0.1:5000/annex/v1/routine?type=image&phpsessid=<session id obtained by login API>
-* Ex: [GET] http://127.0.0.1:5000/annex/v1/routine?type=image&phpsessid=71bcd3ad03cb3812bf8b48cd8d5*****
+* Routine as Image: [GET] https://annex-server-prod-annex-l4sa4h.mo6.mogenius.io/annex/v1/routine?type=image&phpsessid=<session_id_obtained_by_login_API>
 
 ```json
 {
