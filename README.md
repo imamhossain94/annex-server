@@ -6,6 +6,11 @@ This script will help you to login on your annex portal then get users and routi
 </p>
 
 
+## Special Thanks to
+* <a href="https://github.com/xaadu">Abdullah Zayed</a>, for the initial scripts
+* Naima A**** N***, for her annex credentials.
+
+
 ## Now this app is hosted on Mogenius Studio
 * INSTANCE: 1
 * CPU: 0.5 Core
