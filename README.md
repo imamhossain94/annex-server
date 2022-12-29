@@ -11,11 +11,9 @@ This script will help you to login on your annex portal then get users and routi
 * Naima Akter Nila, for her annex credentials.
 
 
-## Now this app is hosted on Mogenius Studio
-* INSTANCE: 1
-* CPU: 0.5 Core
-* RAM: 1 GB
-* TEMP STORAGE: 512 MB
+## Now this app is hosted on Render
+* Pricing Plan: <a href="https://render.com/pricing-jan-1-2023">Individual</a>
+
 
 ## Used Firebase for Storage
 After scrapping students images and taking routine screenshot from annex portal then we upload them in firebase storage.
@@ -116,7 +114,7 @@ python wsgi.py
 
 ## API Example
 
-* Login: [GET] https://annex-server-prod-annex-l4sa4h.mo6.mogenius.io/annex/v1/login?id=<your_annex_id>&pass=<your_annex_pass>
+* Login: [GET] https://annex.onrender.com/annex/v1/login?id=<your_annex_id>&pass=<your_annex_pass>
 
 ```json
 {
@@ -125,7 +123,7 @@ python wsgi.py
 }
 ```
 
-* Profile: [GET] https://annex-server-prod-annex-l4sa4h.mo6.mogenius.io/annex/v1/profile?phpsessid=<session_id_obtained_by_login_API>
+* Profile: [GET] https://annex.onrender.com/annex/v1/profile?phpsessid=<session_id_obtained_by_login_API>
 
 ```json
 {
@@ -140,7 +138,7 @@ python wsgi.py
 }
 ```
 
-* Routine as Data: [GET] https://annex-server-prod-annex-l4sa4h.mo6.mogenius.io/annex/v1/routine?type=data&phpsessid=<session_id_obtained_by_login_API>
+* Routine as Data: [GET] https://annex.onrender.com/annex/v1/routine?type=data&phpsessid=<session_id_obtained_by_login_API>
 
 ```json
 {
@@ -183,7 +181,7 @@ python wsgi.py
 }
 ```
 
-* Routine as Image: [GET] https://annex-server-prod-annex-l4sa4h.mo6.mogenius.io/annex/v1/routine?type=image&phpsessid=<session_id_obtained_by_login_API>
+* Routine as Image: [GET] https://annex.onrender.com/annex/v1/routine?type=image&phpsessid=<session_id_obtained_by_login_API>
 
 ```json
 {
